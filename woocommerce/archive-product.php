@@ -55,7 +55,7 @@ get_header( 'shop' ); ?>
 				        $loop = new WP_Query( $args );
 				        while ( $loop->have_posts() ) : $loop->the_post(); global $product; ?>				            
 				                <li class="product">    
-				                    <a href="<?php // echo get_permalink( $loop->post->ID ) ?>" title="<?php echo esc_attr($loop->post->post_title ? $loop->post->post_title : $loop->post->ID); ?>" class="product-item">
+				                    <a href="<?php echo get_permalink( $loop->post->ID ) ?>" title="<?php echo esc_attr($loop->post->post_title ? $loop->post->post_title : $loop->post->ID); ?>" class="product-item">
 				                        <?php //woocommerce_show_product_sale_flash( $post, $product ); ?>			                      
 										<?php /*
 							                if ( has_post_thumbnail( $loop->post->ID ) ) 
@@ -99,8 +99,8 @@ get_header( 'shop' ); ?>
 				        $loop = new WP_Query( $args );
 				        while ( $loop->have_posts() ) : $loop->the_post(); global $product; ?>				            
 				                <li class="product">    
-				                    <a href="<?php //echo get_permalink( $loop->post->ID ) ?>" title="<?php echo esc_attr($loop->post->post_title ? $loop->post->post_title : $loop->post->ID); ?>" class="product-item">
-				                        <?php //woocommerce_show_product_sale_flash( $post, $product ); ?>			                      
+				                    <a href="<?php echo get_permalink( $loop->post->ID ) ?>" title="<?php echo esc_attr($loop->post->post_title ? $loop->post->post_title : $loop->post->ID); ?>" class="product-item">
+				                        <?php //woocommerce_show_product_sale_flash( $loop->post, $product ); ?>			                      
 										<?php /*
 							                if ( has_post_thumbnail( $loop->post->ID ) ) 
 							                    echo get_the_post_thumbnail( $loop->post->ID, 'shop_catalog' ); 
