@@ -16,3 +16,230 @@ and rename CHILD_THEME_NAME and PARENT_THEME_SLUG in this file appropriately!
 */
 
 /* Put your custom CSS styles below... */
+#footer-2 {
+	background: #151414 !important;
+}
+.scrollup > i {
+	background: #151414 !important;
+}
+.lower-bar {
+    border-bottom: solid 3px #29c1ec !important;
+}
+.main-navigation ul ul {
+	border-top: 4px solid #fff !important;
+	border-bottom: 4px solid #fff !important;
+}
+
+.main-navigation a:hover, .main-navigation ul.sub-menu a:hover{
+    color: #29c1ec !important;
+}
+
+.cart-value {
+	background: #29c1ec !important;
+}
+.entry-content p > a, .entry-content ul.grn-format li > a  {
+	 color: #29c1ec !important;
+}
+
+.woocommerce-account .content-vw > h1 {
+	display: none;
+}
+
+.woocommerce-account .woocommerce {
+	min-height: 780px;
+}
+.woocommerce button.button,  .woocommerce-button, .woocommerce a.button, input[type=submit]{
+	background: #007bff !important;
+	color: #fff !important;
+}
+.woocommerce-account .woocommerce .retobox, .woocommerce .retobox {
+	padding: 20px;
+	border: 1px solid #f1f1f1;
+	background-color: #fff;
+}
+
+.woocommerce-account .woocommerce #login-box {
+  margin-top: 120px;
+  max-width: 450px;  
+  border: 1px solid #f1f1f1;
+  background-color: #fff;
+}
+
+.woocommerce-account .woocommerce  #login-form {
+  padding: 20px;
+}
+.woocommerce-account .woocommerce  #login-form .login-btn {
+	width: 100%;
+}
+
+.woocommerce-account .woocommerce #login-form #register-link {
+  margin-top: -85px;
+}
+
+.woocommerce-account .woocommerce .w-header-3 {
+	color: #000;
+}
+
+.woocommerce-account .woocommerce label, .woocommerce-account .woocommerce .text-right > a {
+	color: #000;	
+}
+
+.woocommerce-notices-wrapper .woocommerce-error {
+	border:none;
+}
+.woocommerce-notices-wrapper .woocommerce-error:before {
+	display: none;
+}
+.woocommerce-account .woocommerce  nav.woocommerce-MyAccount-navigation ul li {
+	background: #3a618c;
+}
+.woocommerce-account .woocommerce p > a{
+	color:#2a7ad2
+}
+
+.woocommerce #payment {
+	background: #fff !important;
+}
+.woocommerce #coupon_code {
+	width: 200px;
+    height: 46px;
+}
+
+.woocommerce button.button:disabled {
+	padding:17px;
+}
+
+.woocommerce .product-name a {
+	color:#2a7ad2
+}
+
+
+
+.woocommerce .woocommerce-products label, .woocommerce .woocommerce-products a{
+	cursor: pointer;
+	user-select: none;
+	text-decoration: none;
+	display: inline-block;
+	color: inherit;
+	transition: border 0.2s;
+	border-bottom: 5px solid rgba(#8e44ad, 0.2);
+	padding: 3px 2px;
+}
+
+.woocommerce .woocommerce-products .layout{
+	display: grid;
+	height: 100%;
+	width: 100%;
+	overflow: hidden;
+	grid-template-rows: 50px 1fr;
+	grid-template-columns: 1fr 1fr;
+	background: #fff;
+}
+
+.woocommerce .woocommerce-products input[type="radio"]{
+	display: none;
+}
+
+.woocommerce .woocommerce-products label.nav{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	border-bottom: 1px solid #29c1ec;
+	background: #f3f3f3;
+	user-select: none;
+	transition: background 0.4s, padding-left 0.2s;
+	padding-left: 0;
+	color:#c1c1c1;
+ }
+
+.woocommerce .woocommerce-products input[type="radio"]:checked + .page + label.nav {
+    background: #fff;
+    color: #29c1ec;
+    padding-left: 20px;
+    border-top: 1px solid #29c1ec;    
+    border-bottom: 2px solid #fff;
+ }
+.woocommerce .woocommerce-products label.nav:first-of-type {
+
+ border-right: 1px solid #29c1ec;
+}
+.woocommerce .woocommerce-products label.nav:p:last-of-type {
+
+ border-left: 1px solid #29c1ec;
+}
+.woocommerce .woocommerce-products input[type="radio"]:checked + .page + label.nav span {
+    padding-left: 20px;
+}
+.woocommerce .woocommerce-products input[type="radio"]:checked + .page + label.nav svg {
+    opacity: 1;
+}
+
+.woocommerce .woocommerce-products label.navspan {
+    padding-left: 0px;
+    position: relative;
+ }
+.woocommerce .woocommerce-products label.nav svg{    
+    top: 6px;
+    position: relative;
+    width: 32px;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.woocommerce .woocommerce-products .page{
+	grid-column-start: 1;
+	grid-row-start: 2;
+	grid-column-end: span 3;
+	padding: 0px 20px;
+	display: flex;
+	/*align-items: center;*/
+}
+
+.woocommerce .woocommerce-products .page-contents > *{
+	opacity: 0;
+	transform: translateY(20px);
+	transition: opacity 0.2s, transform 0.2s;
+}
+
+.woocommerce .woocommerce-products  .page-contents > *:nth-child(1) {
+	transition-delay: 0.4s;
+}
+.woocommerce .woocommerce-products  .page-contents > *:nth-child(2) {
+	transition-delay: 0.6s;
+}
+
+
+.woocommerce .woocommerce-products input[type="radio"] + .page{
+	transition: transform 0.2s;
+	transform: translateX(100%);
+}
+
+.woocommerce .woocommerce-products input[type="radio"]:checked + .page{
+	transform: translateX(0%);
+ }
+.woocommerce .woocommerce-products .page .page-contents > *{
+    opacity: 1;
+    transform: translateY(0px);
+}
+
+.woocommerce .woocommerce-products .page-contents{
+	max-width: 100%;
+	margin: 0 auto;
+}
+
+.woocommerce .woocommerce-products .products {
+	padding: 20px;
+}
+
+.woocommerce .woocommerce-products .product > .button  {
+	width: 100%;
+}
+
+.woocommerce .woocommerce-products .page-contents ul.products li.product {
+	min-height: 250px;
+}
+
+.woocommerce .woocommerce-products .page-contents ul.products li.product > a.product-item {
+	min-height: 150px;
+}
