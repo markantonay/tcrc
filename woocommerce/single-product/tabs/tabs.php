@@ -27,7 +27,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @see woocommerce_default_product_tabs()
  */
 $product_tabs = apply_filters( 'woocommerce_product_tabs', array() );
-/*
+
 if ( ! empty( $product_tabs ) ) : ?>
 
 	<div class="woocommerce-tabs wc-tabs-wrapper">
@@ -54,4 +54,3 @@ if ( ! empty( $product_tabs ) ) : ?>
 	</div>
 
 <?php endif; ?>
- */ ?>

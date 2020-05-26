@@ -195,13 +195,24 @@ function subscription_payment_complete_hook_callback( $subscription ) {
     }
 
 }
+remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_product_data_tabs', 10 );
 
+function woocommerce_template_product_description() {
+  wc_get_template( 'single-product/tabs/description.php' );
+}
+add_action( 'woocommerce_single_product_summary', 'woocommerce_template_product_description', 20 );
 
+remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_title', 5 );
 
+add_action( 'woocommerce_before_single_product', 'woocommerce_template_single_title', 5);
 
+remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_price', 10 );
+remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_add_to_cart', 30 );
+remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40 );
 
+add_action( 'woocommerce_product_thumbnails','woocommerce_template_single_price',10 );
 
-
+add_action( 'woocommerce_product_thumbnails','woocommerce_template_single_add_to_cart',30 );
 
 
 

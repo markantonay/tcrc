@@ -232,7 +232,7 @@ and rename CHILD_THEME_NAME and PARENT_THEME_SLUG in this file appropriately!
 	padding: 20px;
 }
 
-.woocommerce .woocommerce-products .product > .button  {
+.woocommerce .woocommerce-products .product > .button, .woocommerce .subscription-add-cart .single_add_to_cart_button  {
 	width: 100%;
 }
 
@@ -242,4 +242,26 @@ and rename CHILD_THEME_NAME and PARENT_THEME_SLUG in this file appropriately!
 
 .woocommerce .woocommerce-products .page-contents ul.products li.product > a.product-item {
 	min-height: 150px;
+}
+.woocommerce .product .price {
+	padding: 20px 0;
+}
+.woocommerce .woocommerce-variation-price {
+	padding: 5px 0;
+}
+.woocommerce .product p.price > span, .woocommerce .product .amount, .woocommerce .product .subscription-details{
+    font-size: 21px;
+    color: #1a232d;
+
+}
+.woocommerce .variations .label {
+    font-size: 21px;
+    color: #1a232d;
+}
+.woocommerce .product .price .from {
+	display: none;
+}
+
+.woocommerce .subscription-add-cart .input-text.qty.text {
+    display: none;
 }
