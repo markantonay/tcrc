@@ -229,7 +229,7 @@ and rename CHILD_THEME_NAME and PARENT_THEME_SLUG in this file appropriately!
 }
 
 .woocommerce .woocommerce-products .products {
-	padding: 20px;
+	padding: 20px 0;
 }
 
 .woocommerce .woocommerce-products .product > .button, .woocommerce .subscription-add-cart .single_add_to_cart_button  {
@@ -241,7 +241,7 @@ and rename CHILD_THEME_NAME and PARENT_THEME_SLUG in this file appropriately!
 }
 
 .woocommerce .woocommerce-products .page-contents ul.products li.product > a.product-item {
-	min-height: 150px;
+	min-height: 180px;
 }
 .woocommerce .product .price {
 	padding: 20px 0;

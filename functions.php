@@ -71,7 +71,6 @@ function cb_push_data_manage($order_id){
             $next_renewal_date = $subscription->get_date( 'next_payment_date' );
             $subscriptionId = $subscription->id;
         }    
-
     }
 
     // check if its new order, not a renewal
@@ -80,6 +79,8 @@ function cb_push_data_manage($order_id){
         $user = $order->get_user();
         $order_data = $order->get_data(); // The Order data
         $bill_data = $order_data['billing'];
+        $email = $order->billing_email;
+
         
         $attribute_value = NULL;
         $attribute_name = NULL;
@@ -89,6 +90,8 @@ function cb_push_data_manage($order_id){
             $product_id = $item->get_product_id();
             $product_variation_id = $item->get_variation_id();
             $subscription_id = get_post_meta($product_id, 'subscription_id', true );
+            // Get the product categories for this item 
+            $terms = wp_get_post_terms($product_id, 'product_cat', array('fields' => 'names'));
 
             $product = $item->get_product();
 
@@ -104,8 +107,7 @@ function cb_push_data_manage($order_id){
             }
 
             $terms = get_the_terms( $product_id, 'product_cat' );
-            foreach ( $terms as $term ) {
-                // Categories by slug
+            foreach ( $terms as $term ) { 
                 $product_cat_slug = $term->slug;
 
                 // Check if Product Category is Subscription
@@ -116,7 +118,9 @@ function cb_push_data_manage($order_id){
             $subscription_arr[] = array('subscription_id' => $subscription_id, 'category' => $product_cat_slug);
            
         }
-  
+    
+        //pushtomanage($subscriptionId,$next_renewal_date,$subscription_arr,$bill_data);
+           // process 
         $bodyArr = array(
                 'wp_order_id' => $subscriptionId,
                 'subscriptions' => $subscription_arr,  
@@ -127,8 +131,11 @@ function cb_push_data_manage($order_id){
                 'company' => $bill_data['company'],
                 'mobile' => $bill_data['phone']                   
             );
-
-        $user = $order->get_user();
+   
+        // echo '<pre>';  
+        // print_r($bodyArr);
+        // die();
+       //$user = $order->get_user();
 
         //$url = 'https://demo.rvas.com.au/api/v1/process-subscription';
         //$url = 'http://manage.rvas.com.au/api/v1/process-subscription';
@@ -143,11 +150,47 @@ function cb_push_data_manage($order_id){
                 'headers'     => array('Content-type: application/x-www-form-urlencoded'),
                 'body' => $bodyArr,
                 );
-      
+
         $return = wp_remote_post($url, $args );
         
     }
 }
+
+// function pushtomanage($subscriptionId, $nextrenewaldate, $subscriptions, $billdata){
+
+//     // process 
+//     $bodyArr = array(
+//             'wp_order_id' => $subscriptionId,
+//             'subscriptions' => $subscriptions,  
+//             'renewal_date' => $nextrenewaldate,         
+//             'email' => $billdata['email'],
+//             'first_name' => $billdata['first_name'],
+//             'last_name' => $billdata['last_name'],
+//             'company' => $billdata['company'],
+//             'mobile' => $billdata['phone']                   
+//         );
+
+//    //$user = $order->get_user();
+
+//     //$url = 'https://demo.rvas.com.au/api/v1/process-subscription';
+//     //$url = 'http://manage.rvas.com.au/api/v1/process-subscription';
+//     $url = 'http://dev.local.com/api/v1/process-subscription';
+
+//     $args = array(
+//             'method' => 'POST',
+//             'timeout' => 45,
+//             'redirection' => 5,
+//             'httpversion' => '1.0',
+//             'blocking' => true,
+//             'headers'     => array('Content-type: application/x-www-form-urlencoded'),
+//             'body' => $bodyArr,
+//             );
+
+//     $return = wp_remote_post($url, $args );
+
+    
+// }
+
 
 // Subscroption Complete
 add_action('woocommerce_subscription_payment_complete', 'subscription_payment_complete_hook_callback', 10, 2);
@@ -192,9 +235,48 @@ function subscription_payment_complete_hook_callback( $subscription ) {
 
         $results = $manage_db->get_results($query);
 
+    // } else { // Add on process
+
+    //     //$order = $subscription;
+
+    //     $order = wc_get_order( $subscription->get_parent_id() );
+
+    //      // Product Order Data
+    //     $user = $order->get_user();
+    //     $order_data = $order->get_data(); // The Order data
+    //     $bill_data = $order_data['billing'];
+    //     $subscriptionId = $sid;
+
+    //     // Adds On Category
+    //     $categories = array('Add On'); 
+    //     // Check if its module
+    //     if ( sizeof( $order->get_items() ) > 0 ) {
+    //         foreach( $order->get_items() as $item ) {
+    //             // check if order product has add ons.
+    //             if( has_term( $categories, 'product_cat', $item->get_product_id() ) ) {
+
+    //                 $product_name = $item->get_name();
+    //                 $product_id = $item->get_product_id();
+    //                 $product_variation_id = $item->get_variation_id();
+    //                 $subscription_id = get_post_meta($product_id, 'subscription_id', true );
+
+    //                 // Get the product categories for this item 
+    //                 $terms = wp_get_post_terms($product_id, 'product_cat', array('fields' => 'names'));
+
+    //                 $product = $item->get_product();
+                    
+    //                 $subscription_arr[] = array('subscription_id' => $subscription_id, 'category' => $terms->name);
+    //                  // call push to manage  
+    //                 pushtomanage($subscriptionId,$next_renewal_date,$subscription_arr,$bill_data);
+                                       
+    //             } 
+    //         }
+    //     }
+
     }
 
 }
+
 remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_product_data_tabs', 10 );
 
 function woocommerce_template_product_description() {
