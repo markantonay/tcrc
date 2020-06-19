@@ -455,6 +455,22 @@ function update_wc_order_status($posted) {
 // 
 
 
-
-
+add_filter ( 'woocommerce_account_menu_items', 'add_my_account_navigation' );
+function add_my_account_navigation( $menu_links ){
+ 
+    // we will hook "anyuniquetext123" later
+    $new = array( '../shop' => 'Shop' );
+ 
+    // or in case you need 2 links
+    // $new = array( 'link1' => 'Link 1', 'link2' => 'Link 2' );
+ 
+    // array_slice() is good when you want to add an element between the other ones
+    $menu_links = array_slice( $menu_links, 0, 1, true ) 
+    + $new 
+    + array_slice( $menu_links, 1, NULL, true );
+ 
+ 
+    return $menu_links;
+ 
+}
 ?>
